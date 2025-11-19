@@ -24,6 +24,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Verify login
+        run: echo "Logged in as ${{ github.actor }}"
 
       - name: Convert repository name to lowercase
         id: repo_lowercase
