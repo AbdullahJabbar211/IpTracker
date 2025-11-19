@@ -7,6 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout repository
@@ -25,5 +28,6 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/abdullahjabbar211/iptracker:latest
-
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/iptracker:latest
+            ghcr.io/${{ github.repository_owner }}/iptracker:${{ github.sha }}
